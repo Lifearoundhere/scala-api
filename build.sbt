@@ -12,23 +12,22 @@ scalaVersion := "2.13.1"
 
 // It's possible to define many kinds of settings, such as:
 
-name := "hello-world"
-organization := "ch.epfl.scala"
+name := "scala-api"
+// organization := "ch.epfl.scala"
 version := "1.0"
 
 // Note, it's not required for you to define these three settings. These are
 // mostly only necessary if you intend to publish your library's binaries on a
 // place like Sonatype or Bintray.
 
-
 // Want to use a published library in your project?
 // You can define other libraries as dependencies in your build like this:
-libraryDependencies += 
-libraryDependencies ++= Seq(  
-  "org.typelevel" %% "cats-core" % "2.0.0",
-  "com.typesafe.akka" %% "akka-actor" % "2.5.13",
-  "com.typesafe.akka" %% "akka-stream" % "2.5.13",
-  "com.typesafe.akka" %% "akka-http" % "10.1.3")
+libraryDependencies ++= Seq(
+  "org.typelevel" %% "cats-core" % "2.1.0",
+  "com.typesafe.akka" %% "akka-actor" % "2.6.3",
+  "com.typesafe.akka" %% "akka-stream" % "2.6.3",
+  "com.typesafe.akka" %% "akka-http" % "10.1.10"
+)
 // Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
 // we're adding the cats dependency to the set of dependencies that sbt will go
 // and fetch when it starts up.
