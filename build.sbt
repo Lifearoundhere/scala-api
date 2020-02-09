@@ -26,7 +26,11 @@ libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-core" % "2.1.0",
   "com.typesafe.akka" %% "akka-actor" % "2.6.3",
   "com.typesafe.akka" %% "akka-stream" % "2.6.3",
-  "com.typesafe.akka" %% "akka-http" % "10.1.10"
+  "com.typesafe.akka" %% "akka-http" % "10.1.10",
+  "com.typesafe.akka" %% "akka-http-spray-json" % "10.1.10",
+  "com.typesafe.akka" %% "akka-stream-testkit" % "2.6.3",
+  "com.typesafe.akka" %% "akka-http-testkit" % "10.1.10"
+
 )
 // Here, `libraryDependencies` is a set of dependencies, and by using `+=`,
 // we're adding the cats dependency to the set of dependencies that sbt will go
