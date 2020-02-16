@@ -6,36 +6,26 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
-import com.basicAPI.models.{Cart, Item}
+import com.basicAPI.models.{Cart, Item, SinglePlanet}
 import spray.json.DefaultJsonProtocol._
-
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.io.StdIn
 
 object Server extends App {
-//  val host = "0.0.0.0"
-//  val port = 9000
 
   implicit val system: ActorSystem = ActorSystem("system")
   implicit val executor: ExecutionContext = system.dispatcher
-  implicit val materializer = ActorMaterializer()
+  implicit val materializer = ActorMaterializer
 
   implicit val itemFormat = jsonFormat2(Item)
 
-//
-//  var cart: List[Item] = Nil
-//
-//  def fetchItem(itemId: Long): Future[Option[Item]] = Future {
-//    cart.find(o => o.id == itemId)
-//  }
-
   val route =
-    path("item") {
+    path("planet") {
       concat(
         get {
           complete(
-            Service.first.map(_.toString)
+           DalRoutes.getJson("planets",1)
           )
         },
         post {
@@ -49,7 +39,7 @@ object Server extends App {
   val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)
 
   println(
-    s"com.basicAPI.Server online at http://localhost:8080/item\nPress RETURN to stop..."
+    s"com.basicAPI.Server online at http://localhost:8080/planet\nPress RETURN to stop..."
   )
   StdIn.readLine() // let it run until user presses return
   bindingFuture
